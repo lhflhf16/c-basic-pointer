@@ -1,0 +1,55 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+//指针实现字符串长度计算：方法三
+int My_strlen_3(char* ch)
+{
+	int i = 0;
+	while (*(ch + i) != '\0')
+	{
+		i++;
+	}
+	return (ch + i) - ch;
+}
+//递归函数实现字符串长度计算：方法二
+int My_strlen_2(char* ch)
+{
+	if (*ch != '\0')
+	{
+		return 1+My_strlen_2(ch+1);
+	}
+	else
+	{
+		return 0;
+	}
+}
+//函数实现字符串长度计算：方法一
+int My_strlen_1(char* ch)
+{
+	int i = 0;
+	int count = 0;
+	while (1)
+	{
+		if ((*(ch + i)) != '\0')
+		{
+			count++;
+			i++;
+		}
+		else
+		{
+			break;
+		}
+	}
+	return count;
+}
+int main()
+{
+	char ch[] = {'a','b','c','d','\0'};
+	int str = My_strlen_1(ch);
+	printf("str=%d\n", str);
+	str = My_strlen_2(ch); 
+	printf("str=%d\n", str);
+	str = My_strlen_3(ch);
+	printf("str=%d\n", str);
+	return 0;
+}
