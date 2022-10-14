@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+//指针-指针求字符串长度：方法3.1（改进了一下）
+int My_strlen_3_1(char ch[])
+{
+	char* star = ch;
+	char* end = ch;//这里要从第一个元素开始向后找直到遇到'\0'，如果初始化为NULL是不可以的
+	while (*end != '\0')
+	{
+		end++;
+	}
+	return end - star;
+}
+int main()
+{
+	char ch[] = "abcd";
+	int str = My_strlen_3_1(ch);
+	printf("str=%d\n", str);
+	return 0;
+}
