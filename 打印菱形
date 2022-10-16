@@ -1,0 +1,67 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+#define row 13
+#define col 13
+void Initarr(char arr[row][col])
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < col; j++)
+		{
+			arr[i][j] = ' ';
+		}
+	}
+}
+void Display(char arr[row][col])
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < col; j++)
+		{
+			printf("%c", arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+void Replace(char arr[row][col])
+{
+	int i = 0;
+	int j = 0;
+	int k = 0;//每一行中间一边的的*数量
+	for (i = 0; i < row; i++)
+	{
+		//改变上半部分
+		if (i <= row / 2)
+		{
+			for (k = 0; k <= i; k++)
+			{
+				arr[i][col / 2 + k] = '*';
+				arr[i][col / 2 - k] = '*';
+			}
+		}
+		//改变下半部分
+		else
+		{
+			for (k = row-1 - i; k >= 0; k--)
+			{
+				arr[i][col / 2 + k] = '*';
+				arr[i][col / 2 - k] = '*';
+			}
+		}
+	}
+}
+int main()
+{
+	char arr[row][col] = { 0 };
+	//初始化数组为全空格
+	Initarr(arr);
+	//打印
+	Replace(arr);
+	Display(arr);
+	return 0;
+}
