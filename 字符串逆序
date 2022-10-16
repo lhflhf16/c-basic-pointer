@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+void reverse_str(char ch[])
+{
+	/*先找到最后一个元素的地址，然后它所指向的内容与第一个元素交换
+	之后左地址+1，右地址-1*/
+	char* lift = ch;
+	char* right = ch;
+	while (*right != '\0')
+	{
+		right++;
+	}
+	right = right - 1;
+	while (lift <= right)
+	{
+		char tmp = ' ';
+		tmp = *lift;
+		*lift = *right;
+		*right = tmp;
+		lift++;
+		right--;
+	}
+}
+int main()
+{
+	char ch[] = "abcdefg";
+	reverse_str(ch);
+	int i = 0;
+	for (i = 0; i < sizeof(ch); i++)
+	{
+		printf("%c ", ch[i]);
+	}
+	return 0;
+}
