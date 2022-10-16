@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+int main()
+{
+	int money = 20;
+	int price = 1;
+	int null = 0;
+	int sum = 0;
+	//20/1=20  20/2=10
+	//10/1=10  10/2=5
+	//5/1=5  5/2=2
+	//2/1=2  2/2=1
+	//1/1=1  1/2=0
+	//除1得到的是喝的数量，同时也是空瓶数量
+	while (money>=1)
+	{
+		null = money / price;
+		money = null / 2;
+		sum = null + sum;
+	}
+	printf("sum=%d\n", sum);
+	return 0;
+}
