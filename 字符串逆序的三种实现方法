@@ -1,0 +1,69 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+//打印函数
+void Display(char arr[], int n)
+{
+	int i = 0;
+	for (i = 0; i < n - 1; i++)
+	{
+		printf("%c ", arr[i]);
+	}
+	printf("\n");
+}
+//下标实现字符串逆序
+void reverse_str(char arr[], int n)
+{
+	int left = 0;
+	int right = n - 2;
+	while (left<right)
+	{
+		char tmp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = tmp;
+		left++;
+		right--;
+	}
+}
+//指针实现字符串逆序
+void reverse_str_2(char arr[])
+{
+	char *left = arr;
+	char *right = arr;
+	while (*right != '\0')
+	{
+		right++;
+	}
+	while (left < right)
+	{
+		char tmp = *left;
+		*left = *(right - 1);
+		*(right - 1) = tmp;
+		left++;
+		right--;
+	}
+}
+//递归+指针实现字符串逆序（递归+下标同理）
+void reverse_str_3(char* left, char* right)
+{
+	if (left < right)
+	{
+		reverse_str_3(left + 1, right - 1);
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+	}
+}
+int main()
+{
+	char arr[] = "abcdefg";
+	int n = sizeof(arr) / sizeof(arr[0]);
+	Display(arr, n);
+	reverse_str(arr,n);
+	Display(arr,n);
+	reverse_str_2(arr);
+	Display(arr, n);
+	reverse_str_3(arr,arr+n-2);
+	Display(arr, n);
+	return 0;
+}
