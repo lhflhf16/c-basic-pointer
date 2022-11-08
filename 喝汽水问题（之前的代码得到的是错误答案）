@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+
+int main()
+{
+	int money = 0;
+	scanf("%d", &money);
+	//用钱买的汽水
+	int sum = money;
+	int empty = sum;
+	//用空平换的汽水
+	while (empty>=2)
+	{
+		sum = sum + empty / 2;
+		empty = empty / 2 + empty % 2;//考虑到空瓶可能会剩一个
+	}
+	printf("%d\n", sum);
+	//由上述代码输入不同的money喝汽水的瓶数为2*money-1;
+	//所以int sum = 2*money-1;也可以得到结果
+	return 0;
+}
